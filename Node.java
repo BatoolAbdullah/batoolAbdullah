@@ -1,64 +1,60 @@
 /**
- * Created by lenovo on 16/03/2022.
+ * Created by lenovo on 11/03/2022.
  */
 public class Node {
-    /**
-     * Created by lenovo on 11/03/2022.
-     */
+    int data;
+    Node next;
+    Node(int d)
+    {
+        this.data=d ;
+        this.next=null;
+    }
 
-        int data;
-        Node next;
-        Node(int d)
+    static class LinkedList
+    {
+        Node start;
+        LinkedList()
         {
-            this.data=d ;
-            this.next=null;
+            start=null;
         }
-
-        static class LinkedList
+        public void push(int data)
         {
-            Node start;
-            LinkedList()
+            if (this.start==null)
             {
-                start=null;
+                Node temp = new Node(data);
+                this.start=temp;
             }
-            public void push(int data)
+            else
             {
-                if (this.start==null)
-                {
-                    Node temp = new Node(data);
-                    this.start=temp;
-                }
-                else
-                {
-                    Node temp =new Node(data);
-                    temp.next=this.start;
-                    this.start=temp;
-                }
-            }
-            public int findSecandLaestNode(Node ptr)
-            {
-                Node temp = ptr;
-                if (temp == null||temp.next == null)
-                    return -1;
-                while (temp.next.next !=null)
-                {
-                    temp=temp.next;
-                }
-                return temp.data;
-            }
-
-            public static void main(String[] args) {
-                LinkedList b = new LinkedList();
-                b.push(12);
-                b.push(29);
-                b.push(11);
-                b.push(23);
-                b.push(8);
-                System.out.println(b.findSecandLaestNode(b.start));
-
-
+                Node temp =new Node(data);
+                temp.next=this.start;
+                this.start=temp;
             }
         }
+        public int findSecandLaestNode(Node ptr)
+        {
+            Node temp = ptr;
+            if (temp == null||temp.next == null)
+                return -1;
+            while (temp.next.next !=null)
+            {
+                temp=temp.next;
+            }
+            return temp.data;
+        }
+
+        public static void main(String[] args) {
+            LinkedList b = new LinkedList();
+            b.push(12);
+            b.push(29);
+            b.push(11);
+            b.push(23);
+            b.push(8);
+            System.out.println(b.findSecandLaestNode(b.start));
 
 
+        }
+    }
 }
+
+
